@@ -6,3 +6,4 @@
 /gatewayserver/target/
 /loans/target/
 /message/target/
+*.iml
