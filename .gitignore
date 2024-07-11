@@ -7,3 +7,4 @@
 /loans/target/
 /message/target/
 *.iml
+.idea*
