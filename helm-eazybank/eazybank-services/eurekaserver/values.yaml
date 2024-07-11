@@ -1,0 +1,37 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+deploymentName: eurekaserver-deployment
+serviceName: eurekaserver
+appLabel: eurekaserver
+appName: eurekaserver
+
+replicaCount: 1
+
+image:
+  repository: imritam97/eurekaserver
+  tag: s14
+
+containerPort: 8070
+
+service:
+  type: ClusterIP
+  port: 8070
+  targetPort: 8070
+
+database:
+  accounts_db_enabled: false
+  cards_db_enabled: false
+  loans_db_enabled: false
+  credentials_enabled: false
+
+appname_enabled: true
+profile_enabled: false
+accounts_db_enabled: false
+cards_db_enabled: false
+loans_db_enabled: false
+config_enabled: true
+eureka_enabled: false
+resouceserver_enabled: false
+otel_enabled: true
+kafka_enabled: false

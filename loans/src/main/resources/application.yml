@@ -1,0 +1,78 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: loans
+
+  datasource:
+    url: jdbc:mysql://localhost:3308/loansdb
+    username: eazybank
+    password: eazybank
+
+  sql:
+    init:
+      mode: always
+
+  jpa:
+    show-sql: true
+
+  config:
+    import: optional:configserver:http://localhost:8071
+
+  profiles:
+      active: prod
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      probes:
+        enabled: true
+
+  info:
+    env:
+      enabled: true
+
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+endpoints:
+  shutdown:
+    enabled: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+info:
+  app:
+    name: loans
+    description: Loans application which is responsible for handling customer's loans related data
+    version: 1.0.0
+
+logging:
+  level:
+    com:
+      ritam:
+        loans: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"

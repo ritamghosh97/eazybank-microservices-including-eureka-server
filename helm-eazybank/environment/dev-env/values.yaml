@@ -1,0 +1,28 @@
+global:
+  configMapName: eazybankprod-configmap
+  activeProfile: default
+  configServerURL: configserver:http://configserver:8071/
+  eurekaServerURL: http://eurekaserver:8070/eureka/
+  keyCloakURL: http://keycloak.default.svc.cluster.local:80/realms/master/protocol/openid-connect/certs
+  openTelemetryJavaAgent: "-javaagent:/app/libs/opentelemetry-javaagent-1.32.0.jar"
+  otelExporterEndPoint: http://tempo-grafana-tempo-distributor:4317
+  otelMetricsExporter: none
+  kafkaBrokerURL: kafka-controller-0.kafka-controller-headless.default.svc.cluster.local:9092
+
+database:
+  accountsdb:
+    name: accountsdb
+    url: jdbc:mysql://accountsdb:3307/accountsdb
+
+  loansdb:
+    name: loansdb
+    url: jdbc:mysql://loansdb:3308/loansdb
+
+  cardsdb: 
+    name: cardsdb
+    url: jdbc:mysql://cardsdb:3309/cardsdb
+
+  globalDatabaseConfig:
+    dbRootPassword: root
+    dbUsername: eazybank
+    dbPassword: eazybank
